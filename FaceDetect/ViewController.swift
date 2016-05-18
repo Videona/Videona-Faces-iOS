@@ -153,16 +153,12 @@ extension ViewController: GLKViewDelegate
 
         let leftEyeImage = eyeImage(cameraImage, backgroundImage: cameraImage, leftEye: true)
         let rightEyeImage = eyeImage(cameraImage, backgroundImage: leftEyeImage, leftEye: false)
-     
-        comicEffect.setValue(rightEyeImage, forKey: kCIInputImageKey)
-        
-        let outputImage = comicEffect.valueForKey(kCIOutputImageKey) as! CIImage
 
-        ciContext.drawImage(outputImage,
+        ciContext.drawImage(rightEyeImage,
             inRect: CGRect(x: 0, y: 0,
                 width: imageView.drawableWidth,
                 height: imageView.drawableHeight),
-            fromRect: outputImage.extent)
+            fromRect: rightEyeImage.extent)
     }
 }
 
